@@ -1,0 +1,41 @@
+{
+  "policy": {
+    "rules": [
+      {
+        "id": "members-read",
+        "effect": "allow",
+        "all": [
+          {
+            "field": "role",
+            "op": "in",
+            "value": [
+              "member",
+              "editor"
+            ]
+          },
+          {
+            "field": "action",
+            "op": "eq",
+            "value": "read"
+          }
+        ]
+      },
+      {
+        "id": "blocked-user",
+        "effect": "deny",
+        "all": [
+          {
+            "field": "blocked",
+            "op": "eq",
+            "value": true
+          }
+        ]
+      }
+    ]
+  },
+  "context": {
+    "role": "editor",
+    "action": "read",
+    "blocked": true
+  }
+}
